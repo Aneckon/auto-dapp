@@ -9,7 +9,7 @@ interface cardProps {
 }
 
 export const Card: FC<cardProps> = ({ name, price, image }) => {
-  return <div className="card">
+  return <div className="cardItem">
     <img src={image} alt="" />
     <h4>{name}</h4>
     <p>{price}</p>

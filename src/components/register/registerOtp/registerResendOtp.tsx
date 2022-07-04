@@ -14,11 +14,12 @@ export const RegisterResendOtp: FC<registerProps> = ({ register, errors }) => {
       <div
         className="card shadow-2-strong card-body p-5 text-center"
         style={{ borderRadius: '1rem' }}>
+        <h3 className="mb-5">Sign Up</h3>
         <div className="form-floating mb-3">
           <input
             {...register('otp', {
               required: true,
-              maxLength: 20
+              maxLength: 20,
             })}
             type="number"
             className="form-control"
