@@ -51,18 +51,20 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
         </ul>
         <ul>
           <li onClick={(e) => e.stopPropagation()}>
-            <div className="ava" onClick={() => setOpenAva(!openAva)}>
-              <p>U</p>
+            <div className="ava" >
+              <p onClick={() => setOpenAva(!openAva)}>U</p>
               <div className={openAva ? 'ava__dropdown' : 'none ava__dropdown-mobile'}>
                 <NavLink to="/profile">Profile</NavLink>
-                <p onClick={() => localStorage.removeItem('token')}>LogOut</p>
+                <NavLink to="" onClick={() => localStorage.removeItem('token')}>
+                  LogOut
+                </NavLink>
               </div>
             </div>
           </li>
         </ul>
         <ul>
           <li>
-          <ConnectButton RPC={RPC} portisId={'portisId-key-project'} />
+            <ConnectButton RPC={RPC} portisId={'portisId-key-project'} />
           </li>
         </ul>
       </nav>
