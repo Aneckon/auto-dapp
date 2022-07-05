@@ -1,4 +1,6 @@
 .home {
+  height: 100%;
+  padding-bottom: 150px;
   &__title {
     font-style: normal;
     font-weight: 700;
@@ -8,27 +10,67 @@
     letter-spacing: -0.5px;
     color: #ffffff;
     margin-top: 70px;
+
+    @media (max-width: 1440px) {
+      font-size: 32px;
+    }
+    @media (max-width: 992px) {
+      font-size: 30px;
+      margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+      font-size: 26px;
+    }
+    @media (max-width: 576px) {
+      font-size: 24px;
+    }
+    @media (max-width: 476px) {
+      margin-top: 30px;
+      font-size: 20px;
+    }
   }
 
-  &__content{
+  &__content {
     position: relative;
-    &::after{
+    &::after {
       content: '';
       position: absolute;
       right: 0;
-      bottom: 170px;
-      width: 102px;
-      height: 102px;
+      bottom: 40px;
+      width: 72px;
+      height: 72px;
       background: url('../image/decor.svg') no-repeat center;
+      background-size: cover;
+
+      @media (max-width: 1440px) {
+        bottom: 45px;
+        width: 62px;
+        height: 62px;
+      }
     }
-    &::before{
+    &::before {
       content: '';
       position: absolute;
       left: 80px;
-      bottom: 0px;
-      width: 102px;
-      height: 102px;
+      bottom: -100px;
+      width: 72px;
+      height: 72px;
       background: url('../image/decor2.svg') no-repeat center;
+      background-size: cover;
+
+      @media (max-width: 1440px) {
+        bottom: -80px;
+        width: 62px;
+        height: 62px;
+      }
+      @media (max-width: 576px) {
+        width: 52px;
+        height: 52px;
+        bottom: -30px;
+      }
+      @media (max-width: 476px) {
+        left: 0;
+      }
     }
   }
 }

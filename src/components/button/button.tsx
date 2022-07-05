@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import './button.scss';
 
 interface buttonProps {
-  children: string;
+  children: any;
   className: string;
 }
 

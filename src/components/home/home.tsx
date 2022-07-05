@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Header, Card, Button } from '..';
 
@@ -8,6 +9,7 @@ import './home.scss';
 
 export const Home = () => {
   const [openAva, setOpenAva] = useState(false);
+  const itemsPrice = useSelector((state: { cardItem: any }) => state.cardItem);
 
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
@@ -17,12 +19,12 @@ export const Home = () => {
         <div className="home__content">
           <div className="row">
             {cardApi.map((cards) => (
-              <div className="col-4">
-                <Card key={cards.id} name={cards.name} image={cards.image} price={cards.price} />
+              <div key={cards.id} className="col-md-4 col-sm-6 col-12">
+                <Card id={cards.id} name={cards.name} image={cards.image} price={cards.price} />
               </div>
             ))}
           </div>
-          <Button className="card__btn">Pay 0.2 BNB</Button>
+          {itemsPrice ? <Button className="card__btn">Pay {itemsPrice}</Button> : null}
         </div>
       </div>
     </div>

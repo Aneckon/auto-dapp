@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '..';
@@ -13,10 +13,11 @@ interface headerProps {
 }
 
 export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
+  const [openMenu, setOpenMenu] = useState(false)
   return (
     <header className="header pt-3 d-flex align-items-center justify-content-between">
       <img src={Logo} alt="" />
-      <nav className="header__nav d-flex align-items-center justify-content-between">
+      <nav className={openMenu ? "header__nav align-items-center justify-content-between block" : 'header__nav align-items-center justify-content-between'}>
         <ul className="header__list d-flex align-items-center justify-content-between">
           <li>
             <NavLink to="/" className="active">
@@ -53,6 +54,7 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
           </li>
         </ul>
       </nav>
+      <div onClick={() => setOpenMenu(!openMenu)} className={openMenu ? "header__menu-burger remove" : "header__menu-burger"}></div>
     </header>
   );
 };

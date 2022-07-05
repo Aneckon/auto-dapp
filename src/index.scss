@@ -74,6 +74,10 @@ table {
     background-size: cover;
     background-color: rgb(109, 184, 255);
     z-index: -1;
+
+    @media (max-width: 1024px) {
+      height: 100%;
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import { Auth, Home, Register } from './components';
 
 export const App = () => {
   const navigate = useNavigate();
+
   useEffect(() => {
     // navigate('/auth/login')
   }, []);
