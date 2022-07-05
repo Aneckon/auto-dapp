@@ -216,8 +216,12 @@
       text-align: left;
 
       p{
-        color: #fff;
-        font-weight: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 160%;
+        letter-spacing: 0.004em;
+        color: #ffffff;
+        position: relative;
       }
 
       @media (max-width: 1440px) {

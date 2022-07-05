@@ -34,7 +34,6 @@ export const AccountDiv = styled.div`
   justify-content: space-between;
   border-radius: 4px;
   padding: 2px 2px 2px 10px;
-  width: 150px;
   height: 40px;
   font-size: 14px;
   color: #fff;
