@@ -68,6 +68,7 @@ export const Register = () => {
                 Send OTP
               </button>
               <label
+                className="lable"
                 style={{
                   textAlign: 'left',
                   display: 'inline',

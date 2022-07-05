@@ -62,11 +62,13 @@ export const Login = () => {
 
         <div className="mb-4" style={{ padding: '20px' }}>
           <label
+            className="lable"
             onClick={() => navigate('/auth/register')}
             style={{ textAlign: 'left', display: 'inline', float: 'left' }}>
             SignUp
           </label>
           <label
+            className="lable"
             onClick={() => navigate('/auth/forgot')}
             style={{ textAlign: 'left', display: 'inline', float: 'right' }}>
             Forgot Password ?

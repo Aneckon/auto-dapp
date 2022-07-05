@@ -74,10 +74,15 @@ table {
     background-size: cover;
     background-color: rgb(109, 184, 255);
     z-index: -1;
-    
+
     @media (max-height: 924px) {
       height: 100%;
     }
+  }
+}
+.lable{
+  @media (max-width: 476px){
+    font-size: 12px !important;
   }
 }
 

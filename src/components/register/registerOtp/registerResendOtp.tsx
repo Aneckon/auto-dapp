@@ -39,6 +39,7 @@ export const RegisterResendOtp: FC<registerProps> = ({ register, errors }) => {
           Login
         </button>
         <label
+          className="lable"
           style={{
             textAlign: 'left',
             display: 'inline',

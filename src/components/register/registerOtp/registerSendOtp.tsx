@@ -79,7 +79,7 @@ export const RegisterSendOtp: FC<registerProps> = ({ register, errors }) => {
         <button className="btn btn-primary btn-lg btn-block" type="submit">
           Send OTP
         </button>
-        <label
+        <label  className='lable'
           style={{
             textAlign: 'left',
             display: 'inline',
