@@ -1,4 +1,5 @@
 import React, {useRef} from "react";
+import { Button } from "../../../button";
 import { shortAddress, convertToNormal, copyToClipBoard } from "../../utils";
 import { useBtnConnect } from "../hooks/useBtnConnect";
 import { useModalConnectors } from "../hooks/useModalConnectors";
@@ -25,7 +26,6 @@ import {
 
 import {
   ButtonLogOut,
-  Button,
   AccountDiv,
   WalletSpan,
   SpanBalance,
@@ -39,8 +39,8 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
   return (
     <>
       {!active ? (
-        <Button onClick={openModal} className="BtnBase">
-          Connect Wallet
+        <Button click={openModal} className="btn btn-light btn-rounded">
+          Connect
         </Button>
       ) : (
         <>

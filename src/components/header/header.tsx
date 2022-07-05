@@ -1,9 +1,8 @@
 import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Button } from '..';
-
 import Logo from '../image/logo.svg';
+import { ConnectButton } from '../walletHooks/component/ButtonConnect/connectButton';
 
 import './header.scss';
 
@@ -11,6 +10,14 @@ interface headerProps {
   setOpenAva: any;
   openAva: any;
 }
+
+const RPC = {
+  1: 'https://mainnet.infura.io/v3/8ca77c4631f14dccb88318200cfca61d',
+  3: 'https://ropsten.infura.io/v3/8ca77c4631f14dccb88318200cfca61d',
+  4: 'https://rinkeby.infura.io/v3/8ca77c4631f14dccb88318200cfca61d',
+  5: 'https://goerly.infura.io/v3/8ca77c4631f14dccb88318200cfca61d',
+  42: 'https://kovan.infura.io/v3/8ca77c4631f14dccb88318200cfca61d',
+};
 
 export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -55,7 +62,7 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
         </ul>
         <ul>
           <li>
-            <Button className="btn btn-light btn-rounded">Connect</Button>
+          <ConnectButton RPC={RPC} portisId={'portisId-key-project'} />
           </li>
         </ul>
       </nav>
