@@ -13,11 +13,16 @@ interface headerProps {
 }
 
 export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
-  const [openMenu, setOpenMenu] = useState(false)
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="header pt-3 d-flex align-items-center justify-content-between">
       <img src={Logo} alt="" />
-      <nav className={openMenu ? "header__nav align-items-center justify-content-between block" : 'header__nav align-items-center justify-content-between'}>
+      <nav
+        className={
+          openMenu
+            ? 'header__nav align-items-center justify-content-between block'
+            : 'header__nav align-items-center justify-content-between'
+        }>
         <ul className="header__list d-flex align-items-center justify-content-between">
           <li>
             <NavLink to="/" className="active">
@@ -40,8 +45,8 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
         <ul>
           <li onClick={(e) => e.stopPropagation()}>
             <div className="ava" onClick={() => setOpenAva(!openAva)}>
-              U
-              <div className={openAva ? 'ava__dropdown' : 'none'}>
+              <p>U</p>
+              <div className={openAva ? 'ava__dropdown' : 'none ava__dropdown-mobile'}>
                 <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/">LogOut</NavLink>
               </div>
@@ -54,7 +59,9 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
           </li>
         </ul>
       </nav>
-      <div onClick={() => setOpenMenu(!openMenu)} className={openMenu ? "header__menu-burger remove" : "header__menu-burger"}></div>
+      <div
+        onClick={() => setOpenMenu(!openMenu)}
+        className={openMenu ? 'header__menu-burger remove' : 'header__menu-burger'}></div>
     </header>
   );
 };
