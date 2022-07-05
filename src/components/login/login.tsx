@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { authAxios } from '../axios';
 
 export const Login = () => {
+  const url = '/checkUser';
+
   const navigate = useNavigate();
+  const [axiosError, setAxiosError] = useState(null);
+
   const {
     handleSubmit,
     register,
@@ -13,14 +18,13 @@ export const Login = () => {
   });
 
   const handleLogin = (data: any) => {
-    console.log(data, 'login');
+    authAxios({ data, url, setAxiosError });
   };
 
   return (
     <div className="card-body p-5 text-center">
       <form onSubmit={handleSubmit(handleLogin)}>
         <h3 className="mb-5">Sign in</h3>
-
         <div className="form-floating mb-3">
           <input
             {...register('email', {
@@ -39,6 +43,11 @@ export const Login = () => {
               <div>Enter valid email id</div>
             </div>
           )}
+          {axiosError ? (
+            <div className="alert alert-danger">
+              <div>{axiosError}</div>
+            </div>
+          ) : null}
         </div>
         <div className="form-floating mb-3">
           <input

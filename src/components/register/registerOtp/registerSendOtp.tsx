@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 interface registerProps {
   register: any;
   errors: any;
+  axiosError: any;
 }
 
-export const RegisterSendOtp: FC<registerProps> = ({ register, errors }) => {
+export const RegisterSendOtp: FC<registerProps> = ({ axiosError, register, errors }) => {
   const navigate = useNavigate();
 
   return (
@@ -32,6 +33,11 @@ export const RegisterSendOtp: FC<registerProps> = ({ register, errors }) => {
           {errors.firstName && (
             <div className="alert alert-danger">
               <span className="text-danger">Username is required</span>
+            </div>
+          )}
+          {axiosError && (
+            <div className="alert alert-danger">
+              <div>{axiosError}</div>
             </div>
           )}
         </div>
@@ -79,7 +85,8 @@ export const RegisterSendOtp: FC<registerProps> = ({ register, errors }) => {
         <button className="btn btn-primary btn-lg btn-block" type="submit">
           Send OTP
         </button>
-        <label  className='lable'
+        <label
+          className="lable"
           style={{
             textAlign: 'left',
             display: 'inline',
