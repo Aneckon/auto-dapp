@@ -48,7 +48,7 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
               <p>U</p>
               <div className={openAva ? 'ava__dropdown' : 'none ava__dropdown-mobile'}>
                 <NavLink to="/profile">Profile</NavLink>
-                <NavLink to="/">LogOut</NavLink>
+                <NavLink to="/logOut">LogOut</NavLink>
               </div>
             </div>
           </li>
