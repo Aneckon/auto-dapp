@@ -215,6 +215,11 @@
       height: auto;
       text-align: left;
 
+      p{
+        color: #fff;
+        font-weight: normal;
+      }
+
       @media (max-width: 1440px) {
         font-size: 14px;
       }
