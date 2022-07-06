@@ -31,8 +31,6 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
   const { setProvider } = useModalConnectors(RPC, portisId);
   const copyTextRef = useRef(null);
 
-  console.log(chain);
-
   return (
     <>
       {!active ? (
@@ -118,7 +116,7 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
           </div>
         </div>
       ) : (
-        <div className={!chain ? 'warning red' : 'warning red warning__redactive'}>
+        <div className={!chain ? 'warning red warning__redactive' : 'warning red warning__redactive'}>
           <div className="warning__image"></div>
           <div className="warning__content">
             <h4>Please Choose BSC or CRO network!</h4>
