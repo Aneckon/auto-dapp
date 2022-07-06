@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Header, Card, Button } from '..';
 
 import { cardApi } from '../mokApi';
+import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 
 import './home.scss';
 

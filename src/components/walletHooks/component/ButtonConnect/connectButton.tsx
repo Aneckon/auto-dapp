@@ -1,8 +1,8 @@
-import React, {useRef} from "react";
-import { Button } from "../../../button";
-import { shortAddress, convertToNormal, copyToClipBoard } from "../../utils";
-import { useBtnConnect } from "../hooks/useBtnConnect";
-import { useModalConnectors } from "../hooks/useModalConnectors";
+import React, { useRef } from 'react';
+import { Button } from '../../../button';
+import { shortAddress, convertToNormal, copyToClipBoard } from '../../utils';
+import { useBtnConnect } from '../hooks/useBtnConnect';
+import { useModalConnectors } from '../hooks/useModalConnectors';
 
 import {
   FortMatic,
@@ -11,8 +11,8 @@ import {
   WalletConnect,
   LogOut,
   CloseModal,
-  Portis
-} from "../Icon/Icons";
+  Portis,
+} from '../Icon/Icons';
 
 import {
   ModalBackdrop,
@@ -22,19 +22,16 @@ import {
   ConnectorsItem,
   BtnConnector,
   BtnClose,
-} from "../Modal/style.modal";
+} from '../Modal/style.modal';
 
-import {
-  ButtonLogOut,
-  AccountDiv,
-  WalletSpan,
-  SpanBalance,
-} from "./connectButton.style";
+import { ButtonLogOut, AccountDiv, WalletSpan, SpanBalance } from './connectButton.style';
 
-export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string}) => {
-  const { active, balance, account, disconnect, openModal, isOpen } = useBtnConnect();
+export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string }) => {
+  const { active, balance, account, disconnect, chain, openModal, isOpen } = useBtnConnect();
   const { setProvider } = useModalConnectors(RPC, portisId);
-  const copyTextRef = useRef(null)
+  const copyTextRef = useRef(null);
+
+  console.log(chain);
 
   return (
     <>
@@ -45,10 +42,11 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
       ) : (
         <>
           <AccountDiv className="BtnContainer">
-            <SpanBalance className="SpanBalance">
-              {convertToNormal(balance, 18, 4)}
-            </SpanBalance>
-            <WalletSpan ref={copyTextRef} onClick={() => copyToClipBoard(copyTextRef)} className="BtnAddress">
+            <SpanBalance className="SpanBalance">{convertToNormal(balance, 18, 4)}</SpanBalance>
+            <WalletSpan
+              ref={copyTextRef}
+              onClick={() => copyToClipBoard(copyTextRef)}
+              className="BtnAddress">
               {shortAddress(account)}
             </WalletSpan>
             <ButtonLogOut onClick={disconnect} className="BtnLogout">
@@ -58,11 +56,7 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
         </>
       )}
       <>
-        <ModalBackdrop
-          isOpen={isOpen}
-          onClick={openModal}
-          className="modalBackdrop"
-        >
+        <ModalBackdrop isOpen={isOpen} onClick={openModal} className="modalBackdrop">
           <Container className="modalContainer">
             <BtnClose onClick={openModal} className="modalBtnClose">
               <CloseModal />
@@ -70,10 +64,7 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
             <Connectors className="modalConnectorsContainer">
               {/* MetaMask */}
               <ConnectorsItem className="modalConnectorsItem">
-                <BtnConnector
-                  onClick={() => setProvider("injected")}
-                  className="modalBtnProvider"
-                >
+                <BtnConnector onClick={() => setProvider('injected')} className="modalBtnProvider">
                   <MetaMask />
 
                   <Span className="modalNameWallet"> MetaMask</Span>
@@ -82,9 +73,8 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
               {/* WalletConnect */}
               <ConnectorsItem className="modalConnectorsItem">
                 <BtnConnector
-                  onClick={() => setProvider("walletconnect")}
-                  className="modalBtnProvider"
-                >
+                  onClick={() => setProvider('walletconnect')}
+                  className="modalBtnProvider">
                   <WalletConnect />
 
                   <Span className="modalNameWallet"> WalletConnect</Span>
@@ -93,9 +83,8 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
               {/* Coinbase Wallet */}
               <ConnectorsItem className="modalConnectorsItem">
                 <BtnConnector
-                  onClick={() => setProvider("coinbaseWallet")}
-                  className="modalBtnProvider"
-                >
+                  onClick={() => setProvider('coinbaseWallet')}
+                  className="modalBtnProvider">
                   <CoinBase />
 
                   <Span className="modalNameWallet"> Coinbase Wallet</Span>
@@ -103,20 +92,14 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
               </ConnectorsItem>
               {/* Fortmatic */}
               <ConnectorsItem className="modalConnectorsItem">
-                <BtnConnector
-                  onClick={() => setProvider("fortmatic")}
-                  className="modalBtnProvider"
-                >
+                <BtnConnector onClick={() => setProvider('fortmatic')} className="modalBtnProvider">
                   <FortMatic />
 
                   <Span className="modalNameWallet"> Fortmatic</Span>
                 </BtnConnector>
               </ConnectorsItem>
               <ConnectorsItem className="modalConnectorsItem">
-                <BtnConnector
-                  onClick={() => setProvider("portis")}
-                  className="modalBtnProvider"
-                >
+                <BtnConnector onClick={() => setProvider('portis')} className="modalBtnProvider">
                   <Portis />
 
                   <Span className="modalNameWallet"> Portis</Span>
@@ -126,6 +109,23 @@ export const ConnectButton = ({RPC, portisId}: { RPC: object, portisId: string})
           </Container>
         </ModalBackdrop>
       </>
+      {chain ? (
+        <div className={chain ? 'warning warning__active' : 'warning'}>
+          <div className="warning__image"></div>
+          <div className="warning__content">
+            <h4>Connected to "Network Name"</h4>
+            <p>View on BscScan: {shortAddress(account)}</p>
+          </div>
+        </div>
+      ) : (
+        <div className={chain ? 'warning red' : 'warning red warning__redactive'}>
+          <div className="warning__image"></div>
+          <div className="warning__content">
+            <h4>Please Choose BSC or CRO network!</h4>
+            <p>View on BscScan: {shortAddress(account)}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };

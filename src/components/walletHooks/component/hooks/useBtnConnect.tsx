@@ -4,7 +4,19 @@ import { useConnectors } from './useConnectors';
 import Web3 from 'web3';
 
 export const useBtnConnect = () => {
-  const { library, account, activate, deactivate, active } = useWeb3React();
+  const { library, account, chainId, activate, deactivate, active } = useWeb3React();
+
+  const [chain, setChain] = useState(false);
+
+  useEffect(() => {
+    if (chainId === 338) {
+      setChain(true);
+    } else if (chainId === 56) {
+      setChain(true);
+    } else {
+      setChain(false);
+    }
+  }, [chainId]);
 
   const { connectors } = useConnectors();
 
@@ -53,5 +65,6 @@ export const useBtnConnect = () => {
     account,
     disconnect,
     isOpen,
+    chain,
   };
 };
