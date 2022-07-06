@@ -3,6 +3,11 @@
   text-align: center;
   position: relative;
   cursor: pointer;
+  transition: .3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 
   @media (max-width: 576px) {
     margin-top: 20px;

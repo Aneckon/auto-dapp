@@ -30,7 +30,7 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
             ? 'header__nav align-items-center justify-content-between block'
             : 'header__nav align-items-center justify-content-between'
         }>
-        <ul className="header__list d-flex align-items-center justify-content-between">
+        {/* <ul className="header__list d-flex align-items-center justify-content-between">
           <li>
             <NavLink to="/" className="active">
               Home
@@ -48,7 +48,7 @@ export const Header: FC<headerProps> = ({ setOpenAva, openAva }) => {
           <li>
             <NavLink to="/whitepaper">Whitepaper</NavLink>
           </li>
-        </ul>
+        </ul> */}
         <ul>
           <li onClick={(e) => e.stopPropagation()}>
             <div className="ava" >
