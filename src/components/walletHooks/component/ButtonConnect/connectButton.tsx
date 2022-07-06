@@ -118,7 +118,7 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
           </div>
         </div>
       ) : (
-        <div className={chain ? 'warning red' : 'warning red warning__redactive'}>
+        <div className={!chain ? 'warning red' : 'warning red warning__redactive'}>
           <div className="warning__image"></div>
           <div className="warning__content">
             <h4>Please Choose BSC or CRO network!</h4>
