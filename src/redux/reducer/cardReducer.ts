@@ -12,7 +12,7 @@ const cardSlide = createSlice({
   reducers: {
     setCard: (state, action: PayloadAction<any>) => {
       state.cardItem = action.payload;
-    }
+    },
   },
 });
 

@@ -9,6 +9,7 @@ import './home.scss';
 
 export const Home = () => {
   const [openAva, setOpenAva] = useState(false);
+  const [activeBtn, setActiveBtn] = useState(null);
   const itemsPrice = useSelector((state: { cardItem: any }) => state.cardItem);
 
   return (
@@ -20,11 +21,21 @@ export const Home = () => {
           <div className="row">
             {cardApi.map((cards) => (
               <div key={cards.id} className="col-md-4 col-sm-6 col-12">
-                <Card id={cards.id} name={cards.name} image={cards.image} price={cards.price} />
+                <Card
+                  id={cards.id}
+                  name={cards.name}
+                  image={cards.image}
+                  price={cards.price}
+                  active={cards.active}
+                  setActiveBtn={setActiveBtn}
+                  activeClass={cards.activeClass}
+                />
               </div>
             ))}
           </div>
-          {itemsPrice ? <Button className="card__btn">Pay {itemsPrice}</Button> : null}
+          {itemsPrice ? (
+            <Button className="card__btn">Pay {activeBtn ? itemsPrice : "Comming Soon!"}</Button>
+          ) : null}
         </div>
       </div>
     </div>
