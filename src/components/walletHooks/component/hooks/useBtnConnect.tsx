@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
-import { useConnectors } from "./useConnectors";
-import Web3 from "web3";
+import { useEffect, useState } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import { useConnectors } from './useConnectors';
+import Web3 from 'web3';
 
 export const useBtnConnect = () => {
   const { library, account, activate, deactivate, active } = useWeb3React();
+
   const { connectors } = useConnectors();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [balance, setBalance] = useState("0.00");
+  const [balance, setBalance] = useState('0.00');
 
   let web3 = new Web3(library?.provider);
 
   const getInfo = async () => {
-    const balance = await web3.eth.getBalance(account + "");
+    const balance = await web3.eth.getBalance(account + '');
     if (balance) {
       setBalance(balance);
     }
@@ -24,7 +25,7 @@ export const useBtnConnect = () => {
   };
 
   const refreshState = () => {
-    window.localStorage.setItem("provider", "");
+    window.localStorage.setItem('provider', '');
   };
 
   const disconnect = () => {
@@ -34,7 +35,7 @@ export const useBtnConnect = () => {
   };
 
   useEffect(() => {
-    const provider = window.localStorage.getItem("provider");
+    const provider = window.localStorage.getItem('provider');
 
     if (provider) {
       activate(connectors[provider]);

@@ -10,6 +10,9 @@ import './home.scss';
 export const Home = () => {
   const [openAva, setOpenAva] = useState(false);
   const [activeBtn, setActiveBtn] = useState(null);
+
+  const [activeCard, setActiveCard] = useState(null);
+
   const itemsPrice = useSelector((state: { cardItem: any }) => state.cardItem);
 
   return (
@@ -28,13 +31,14 @@ export const Home = () => {
                   price={cards.price}
                   active={cards.active}
                   setActiveBtn={setActiveBtn}
-                  activeClass={cards.activeClass}
+                  setActiveCard={setActiveCard}
+                  activeCard={activeCard}
                 />
               </div>
             ))}
           </div>
           {itemsPrice ? (
-            <Button className="card__btn">Pay {activeBtn ? itemsPrice : "Comming Soon!"}</Button>
+            <Button className="card__btn">Pay {activeBtn ? itemsPrice : 'Comming Soon!'}</Button>
           ) : null}
         </div>
       </div>

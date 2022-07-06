@@ -1,8 +1,7 @@
-import React, { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { setCard } from '../../redux/reducer/cardReducer';
-import { cardApi } from '../mokApi';
 
 import './card.scss';
 
@@ -12,8 +11,9 @@ interface cardProps {
   price: string;
   image: string;
   active: boolean;
-  setActiveBtn: any;
-  activeClass: boolean;
+  setActiveBtn: (active: any) => void;
+  activeCard: null;
+  setActiveCard: (name: any) => void;
 }
 
 export const Card: FC<cardProps> = ({
@@ -23,20 +23,21 @@ export const Card: FC<cardProps> = ({
   id,
   active,
   setActiveBtn,
-  activeClass,
+  setActiveCard,
+  activeCard,
 }) => {
   const dispatch = useDispatch();
-  const [activeCard, setActiveCard] = useState(false);
 
   const handleClick = () => {
     dispatch(setCard(price));
     setActiveBtn(active);
-    setActiveCard(true);
-    cardApi.map((item) => (item.id === id ? {...item, activeClass: true } : item));
+    setActiveCard(name);
   };
 
   return (
-    <div onClick={handleClick} className={activeCard ? 'cardItem cardItem__active' : 'cardItem'}>
+    <div
+      onClick={handleClick}
+      className={name === activeCard ? 'cardItem cardItem__active' : 'cardItem'}>
       <img src={image} alt="" />
       <h4>{name}</h4>
       <p>({price})</p>
