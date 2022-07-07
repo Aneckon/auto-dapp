@@ -32,8 +32,6 @@ export const Home = () => {
     }
   }, [payBalanceBtn, balance, itemsPrice]);
 
-  console.log(activeBalanceBtn);
-
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
       <div className="container">
@@ -58,14 +56,14 @@ export const Home = () => {
           </div>
           {account ? (
             itemsPrice ? (
-              <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
+              <Button
+                click={() => setPayBalanceBtn(!payBalanceBtn)}
+                className='card__btn'>
                 Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
               </Button>
             ) : null
           ) : (
-            <Button
-              click={() => setActiveBalanceBtn(true)}
-              className={activeBalanceBtn ? 'card__btn card__btn-none' : 'card__btn'}>
+            <Button click={() => setActiveBalanceBtn(!activeBalanceBtn)} className='card__btn card__btn-none'>
               Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
             </Button>
           )}
@@ -100,7 +98,10 @@ export const Home = () => {
             </div>
           )
         ) : (
-          <div className={payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'}>
+          <div
+            className={
+              payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'
+            }>
             <div className="warning__image"></div>
             <div className="warning__content">
               <h4>Please Choose BSC or CRO network!</h4>
