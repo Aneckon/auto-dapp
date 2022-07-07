@@ -77,7 +77,7 @@ export const Home = () => {
                       : () => setActiveBalanceBtn(!activeBalanceBtn)
                   }
                   className="card__btn">
-                  {activeBtn ? `Pay ${priceCro} CRO` : 'Comming Soon!'}
+                  {activeBtn ? `Pay ${priceCro.toFixed(5)} CRO` : 'Comming Soon!'}
                 </Button>
               ) : null
             ) : itemsPrice ? (
@@ -90,17 +90,7 @@ export const Home = () => {
                 className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
                 {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
               </Button>
-            ) : (
-              <Button
-                click={
-                  account
-                    ? () => setPayBalanceBtn(!payBalanceBtn)
-                    : () => setActiveBalanceBtn(!activeBalanceBtn)
-                }
-                className="card__btn">
-                {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
-              </Button>
-            )
+            ) : null
           ) : itemsPrice ? (
             <Button
               click={
