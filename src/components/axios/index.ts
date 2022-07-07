@@ -8,9 +8,22 @@ export const authAxios = ({ url, data, setAxiosError }: any) => {
       data,
     })
     .then(function (response) {
-      setAxiosError(response.data.message)
+      setAxiosError(response.data.message);
     })
     .catch(function (error) {
-      setAxiosError(error)
+      setAxiosError(error);
+    });
+};
+
+export const croAxios = () => {
+  const urlAxios = 'https://www.coingecko.com/en/coins/cronos';
+
+  axios
+    .get(urlAxios)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
 };

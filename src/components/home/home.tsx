@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+
+import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 
 import { Header, Card, Button } from '..';
 
 import { cardApi } from '../mokApi';
-import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 
 import './home.scss';
 
 export const Home = () => {
+  const { balance, account, chain } = useBtnConnect();
+
   const [openAva, setOpenAva] = useState(false);
   const [activeBtn, setActiveBtn] = useState(null);
 
   const [activeCard, setActiveCard] = useState(null);
 
   const itemsPrice = useSelector((state: { cardItem: any }) => state.cardItem);
+  const [payBalance, setPayBalance] = useState(false);
+  const [payBalanceBtn, setPayBalanceBtn] = useState(false);
+
+  useEffect(() => {
+    if (payBalanceBtn) {
+      if (balance === itemsPrice) {
+        setPayBalance(true);
+      } else {
+        setPayBalance(false);
+      }
+    }
+  }, [payBalanceBtn, balance, itemsPrice]);
 
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
@@ -39,10 +54,49 @@ export const Home = () => {
             ))}
           </div>
           {itemsPrice ? (
-            <Button className="card__btn">Pay {activeBtn ? itemsPrice : 'Comming Soon!'}</Button>
+            <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
+              Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
+            </Button>
           ) : null}
         </div>
       </div>
+
+      {account ? (
+        chain ? (
+          payBalance ? (
+            <div
+              className={
+                payBalanceBtn
+                  ? 'warning warning__pay warning__active'
+                  : 'warning warning__pay warning__active'
+              }>
+              <div className="warning__image"></div>
+              <div className="warning__content">
+                <h4>Payment Success</h4>
+              </div>
+            </div>
+          ) : (
+            <div
+              className={
+                payBalanceBtn
+                  ? 'warning red warning__pay warning__redactive'
+                  : 'warning red warning__pay'
+              }>
+              <div className="warning__image"></div>
+              <div className="warning__content">
+                <h4>Insufficient Balance</h4>
+              </div>
+            </div>
+          )
+        ) : (
+          <div className={account ? 'warning red warning__redactive' : 'warning red'}>
+            <div className="warning__image"></div>
+            <div className="warning__content">
+              <h4>Please Choose BSC or CRO network!</h4>
+            </div>
+          </div>
+        )
+      ) : null}
     </div>
   );
 };
