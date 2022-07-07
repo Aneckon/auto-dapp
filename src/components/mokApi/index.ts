@@ -6,7 +6,7 @@ export const cardApi = [
   {
     id: 1,
     name: 'Website',
-    price: '0.2 BNB',
+    price: 0.2,
     image: websiteImage,
     active: true,
     activeClass: false,
@@ -14,7 +14,7 @@ export const cardApi = [
   {
     id: 2,
     name: 'Token/Contract',
-    price: '1 BNB',
+    price: 1,
     image: websiteImage2,
     active: false,
     activeClass: false,
@@ -22,7 +22,7 @@ export const cardApi = [
   {
     id: 3,
     name: 'Dapp',
-    price: '3 BNB',
+    price: 3,
     image: websiteImage3,
     active: false,
     activeClass: false,

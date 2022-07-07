@@ -8,7 +8,7 @@ import './card.scss';
 interface cardProps {
   id: number;
   name: string;
-  price: string;
+  price: number;
   image: string;
   active: boolean;
   setActiveBtn: (active: any) => void;
@@ -40,7 +40,7 @@ export const Card: FC<cardProps> = ({
       className={name === activeCard ? 'cardItem cardItem__active' : 'cardItem'}>
       <img src={image} alt="" />
       <h4>{name}</h4>
-      <p>({price})</p>
+      <p>({price} BNB)</p>
     </div>
   );
 };

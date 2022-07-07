@@ -65,7 +65,7 @@ export const Home = () => {
             <Button
               click={() => setActiveBalanceBtn(!activeBalanceBtn)}
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-              {activeBtn ? itemsPrice : 'Comming Soon!'}
+              {activeBtn ? `${itemsPrice} BNB` : 'Comming Soon!'}
             </Button>
           ) : null}
         </div>
