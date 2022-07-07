@@ -56,17 +56,17 @@ export const Home = () => {
           </div>
           {account ? (
             itemsPrice ? (
-              <Button
-                click={() => setPayBalanceBtn(!payBalanceBtn)}
-                className='card__btn'>
+              <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
                 Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
               </Button>
             ) : null
-          ) : (
-            <Button click={() => setActiveBalanceBtn(!activeBalanceBtn)} className='card__btn card__btn-none'>
+          ) : itemsPrice ? (
+            <Button
+              click={() => setActiveBalanceBtn(!activeBalanceBtn)}
+              className="card__btn card__btn-none">
               Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
             </Button>
-          )}
+          ) : null}
         </div>
       </div>
 
