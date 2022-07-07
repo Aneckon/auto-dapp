@@ -30,6 +30,8 @@ export const Home = () => {
         setPayBalance(false);
       }
     }
+    console.log(payBalance);
+    
   }, [payBalanceBtn, balance, itemsPrice]);
 
   return (
@@ -63,8 +65,8 @@ export const Home = () => {
           ) : itemsPrice ? (
             <Button
               click={() => setActiveBalanceBtn(!activeBalanceBtn)}
-              className="card__btn card__btn-none">
-              Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
+              className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
+              {activeBtn ? itemsPrice : 'Comming Soon!'}
             </Button>
           ) : null}
         </div>
@@ -77,7 +79,7 @@ export const Home = () => {
               className={
                 payBalanceBtn
                   ? 'warning warning__pay warning__active'
-                  : 'warning warning__pay warning__active'
+                  : 'warning warning__pay'
               }>
               <div className="warning__image"></div>
               <div className="warning__content">
