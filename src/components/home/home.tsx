@@ -6,11 +6,14 @@ import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 import { Header, Card, Button, Warning } from '..';
 
 import { cardApi } from '../mokApi';
+import { bnbAxios, croAxios } from '../axios';
 
 import './home.scss';
+import { useWeb3React } from '@web3-react/core';
 
 export const Home = () => {
   const { balance, account, chain } = useBtnConnect();
+  const { chainId } = useWeb3React();
 
   const [openAva, setOpenAva] = useState(false);
   const [activeBtn, setActiveBtn] = useState(null);
@@ -22,6 +25,9 @@ export const Home = () => {
   const [payBalanceBtn, setPayBalanceBtn] = useState(false);
   const [activeBalanceBtn, setActiveBalanceBtn] = useState(false);
 
+  const [payBnb, setPayBnb] = useState([]);
+  const [payCro, setPayCro] = useState([]);
+
   useEffect(() => {
     if (payBalanceBtn) {
       if (balance !== '0') {
@@ -32,7 +38,10 @@ export const Home = () => {
     }
   }, [payBalanceBtn, balance, itemsPrice]);
 
-  console.log(balance, itemsPrice);
+  useEffect(() => {
+    croAxios({ setPayCro });
+    bnbAxios({ setPayBnb });
+  }, [setPayCro, setPayBnb]);
 
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
@@ -57,16 +66,48 @@ export const Home = () => {
             ))}
           </div>
           {account ? (
-            itemsPrice ? (
-              <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
-                {activeBtn ? `Pay ${itemsPrice}` : 'Comming Soon!'}
+            chain && chainId === 338 ? (
+              itemsPrice ? (
+                <Button
+                  click={
+                    account
+                      ? () => setPayBalanceBtn(!payBalanceBtn)
+                      : () => setActiveBalanceBtn(!activeBalanceBtn)
+                  }
+                  className="card__btn">
+                  {activeBtn ? `Pay ${payCro} CRO` : 'Comming Soon!'}
+                </Button>
+              ) : null
+            ) : itemsPrice ? (
+              <Button
+                click={
+                  account
+                    ? () => setPayBalanceBtn(!payBalanceBtn)
+                    : () => setActiveBalanceBtn(!activeBalanceBtn)
+                }
+                className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
+                {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
               </Button>
-            ) : null
+            ) : (
+              <Button
+                click={
+                  account
+                    ? () => setPayBalanceBtn(!payBalanceBtn)
+                    : () => setActiveBalanceBtn(!activeBalanceBtn)
+                }
+                className="card__btn">
+                {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
+              </Button>
+            )
           ) : itemsPrice ? (
             <Button
-              click={() => setActiveBalanceBtn(!activeBalanceBtn)}
+              click={
+                account
+                  ? () => setPayBalanceBtn(!payBalanceBtn)
+                  : () => setActiveBalanceBtn(!activeBalanceBtn)
+              }
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-              {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
+              {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
             </Button>
           ) : null}
         </div>
