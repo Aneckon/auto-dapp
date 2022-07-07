@@ -43,6 +43,8 @@ export const Home = () => {
     bnbAxios({ setPayBnb });
   }, [setPayCro, setPayBnb]);
 
+  const priceCro = Number(payCro) / itemsPrice;
+
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
       <div className="container">
@@ -75,7 +77,7 @@ export const Home = () => {
                       : () => setActiveBalanceBtn(!activeBalanceBtn)
                   }
                   className="card__btn">
-                  {activeBtn ? `Pay ${payCro} CRO` : 'Comming Soon!'}
+                  {activeBtn ? `Pay ${priceCro} CRO` : 'Comming Soon!'}
                 </Button>
               ) : null
             ) : itemsPrice ? (
@@ -86,7 +88,7 @@ export const Home = () => {
                     : () => setActiveBalanceBtn(!activeBalanceBtn)
                 }
                 className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-                {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
+                {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
               </Button>
             ) : (
               <Button
@@ -96,7 +98,7 @@ export const Home = () => {
                     : () => setActiveBalanceBtn(!activeBalanceBtn)
                 }
                 className="card__btn">
-                {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
+                {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
               </Button>
             )
           ) : itemsPrice ? (
