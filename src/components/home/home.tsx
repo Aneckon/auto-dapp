@@ -20,6 +20,7 @@ export const Home = () => {
   const itemsPrice = useSelector((state: { cardItem: any }) => state.cardItem);
   const [payBalance, setPayBalance] = useState(false);
   const [payBalanceBtn, setPayBalanceBtn] = useState(false);
+  const [activeBalanceBtn, setActiveBalanceBtn] = useState(false);
 
   useEffect(() => {
     if (payBalanceBtn) {
@@ -30,6 +31,8 @@ export const Home = () => {
       }
     }
   }, [payBalanceBtn, balance, itemsPrice]);
+
+  console.log(activeBalanceBtn);
 
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
@@ -53,11 +56,19 @@ export const Home = () => {
               </div>
             ))}
           </div>
-          {itemsPrice ? (
-            <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
+          {account ? (
+            itemsPrice ? (
+              <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
+                Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
+              </Button>
+            ) : null
+          ) : (
+            <Button
+              click={() => setActiveBalanceBtn(true)}
+              className={activeBalanceBtn ? 'card__btn card__btn-none' : 'card__btn'}>
               Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
             </Button>
-          ) : null}
+          )}
         </div>
       </div>
 
@@ -89,13 +100,20 @@ export const Home = () => {
             </div>
           )
         ) : (
-          <div className={account ? 'warning red warning__redactive' : 'warning red'}>
+          <div className={payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'}>
             <div className="warning__image"></div>
             <div className="warning__content">
               <h4>Please Choose BSC or CRO network!</h4>
             </div>
           </div>
         )
+      ) : activeBalanceBtn ? (
+        <div className={activeBalanceBtn ? 'warning red warning__redactive' : 'warning red'}>
+          <div className="warning__image"></div>
+          <div className="warning__content">
+            <h4>Please Choose network!</h4>
+          </div>
+        </div>
       ) : null}
     </div>
   );

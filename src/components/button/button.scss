@@ -11,6 +11,19 @@
   text-align: center;
   cursor: pointer;
 
+  &-none{
+    &::after{
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      width: 100%;
+      height: 2px;
+      background: #000; 
+    }
+  }
+
   font-style: normal;
   font-weight: 700;
   font-size: 29px;
