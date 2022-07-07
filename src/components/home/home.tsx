@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import './home.scss';
 
-import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
-
-import { Header, Card, Button, Warning } from '..';
-
-import { cardApi } from '../mokApi';
+import { Button, Card, Header, Warning } from '..';
+import React, { useEffect, useState } from 'react';
 import { bnbAxios, croAxios } from '../axios';
 
-import './home.scss';
+import { cardApi } from '../mokApi';
+import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
+import { useSelector } from 'react-redux';
+import useSendTransaction from '../walletHooks/component/hooks/useSendTransaction';
 import { useWeb3React } from '@web3-react/core';
 
 export const Home = () => {
   const { balance, account, chain } = useBtnConnect();
+  const setTransaction = useSendTransaction()
   const { chainId } = useWeb3React();
 
   const [openAva, setOpenAva] = useState(false);
@@ -28,6 +28,18 @@ export const Home = () => {
   const [payBnb, setPayBnb] = useState([]);
   const [payCro, setPayCro] = useState([]);
 
+  const transaction = () => {
+    if (account) {
+      console.log('1')
+      setTransaction(1)
+      setPayBalanceBtn(!payBalanceBtn)
+    } else {
+      console.log('2')
+      setActiveBalanceBtn(!activeBalanceBtn)
+    }
+    
+  }
+  
   useEffect(() => {
     if (payBalanceBtn) {
       if (balance !== '0') {
@@ -71,33 +83,21 @@ export const Home = () => {
             chain && chainId === 338 ? (
               itemsPrice ? (
                 <Button
-                  click={
-                    account
-                      ? () => setPayBalanceBtn(!payBalanceBtn)
-                      : () => setActiveBalanceBtn(!activeBalanceBtn)
-                  }
+                  click={transaction}
                   className="card__btn">
                   {activeBtn ? `Pay ${priceCro.toFixed(5)} CRO` : 'Comming Soon!'}
                 </Button>
               ) : null
             ) : itemsPrice ? (
               <Button
-                click={
-                  account
-                    ? () => setPayBalanceBtn(!payBalanceBtn)
-                    : () => setActiveBalanceBtn(!activeBalanceBtn)
-                }
+                click={transaction}
                 className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
                 {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
               </Button>
             ) : null
           ) : itemsPrice ? (
             <Button
-              click={
-                account
-                  ? () => setPayBalanceBtn(!payBalanceBtn)
-                  : () => setActiveBalanceBtn(!activeBalanceBtn)
-              }
+              click={transaction}
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
               {activeBtn ? `Pay ${payBnb} BNB` : 'Comming Soon!'}
             </Button>

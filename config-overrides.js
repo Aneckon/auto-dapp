@@ -11,6 +11,7 @@ module.exports = function override(config) {
     https: require.resolve('https-browserify'),
     os: require.resolve('os-browserify'),
     url: require.resolve('url'),
+    buffer: require.resolve("buffer")
   });
   config.resolve.fallback = fallback;
   config.ignoreWarnings = [/node_modules/];
