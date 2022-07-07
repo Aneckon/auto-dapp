@@ -186,7 +186,14 @@ table {
     width: 30px;
     height: 30px;
   }
-
+  &__active{
+    animation: animationsWarning 5s;
+    transform: translateX(100%);
+  }
+  &__redactive{
+    animation: animationsRedWarning 5s;
+    transform: translateX(100%);
+  }
   &__content {
     max-width: calc(100% - 35px);
     padding: 15px;
@@ -213,39 +220,26 @@ table {
       color: #33cda9;
     }
   }
-  transform: translateX(100%);
-  &__active {
-    animation: animationsWarning 5s;
-  }
-  &__redactive {
-    animation: animationsRedWarning 5s;
-  }
 }
 @keyframes animationsRedWarning {
   0% {
-    opacity: 0;
     transform: translateX(100%);
   }
   50% {
-    opacity: 1;
     transform: translateX(0%);
   }
   100% {
-    opacity: 0;
     transform: translateX(100%);
   }
 }
 @keyframes animationsWarning {
   0% {
-    opacity: 0;
     transform: translateX(100%);
   }
   50% {
-    opacity: 1;
     transform: translateX(0%);
   }
   100% {
-    opacity: 0;
     transform: translateX(100%);
   }
 }

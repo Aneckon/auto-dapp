@@ -107,23 +107,25 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
           </Container>
         </ModalBackdrop>
       </>
-      {chain ? (
-        <div className={chain ? 'warning warning__active' : 'warning'}>
-          <div className="warning__image"></div>
-          <div className="warning__content">
-            <h4>Connected to "Network Name"</h4>
-            <p>View on BscScan: {shortAddress(account)}</p>
+      {account ? (
+        chain ? (
+          <div className={account ? "warning warning__active" :  "warning"}>
+            <div className="warning__image"></div>
+            <div className="warning__content">
+              <h4>Connected to "Network Name"</h4>
+              <p>View on BscScan: {shortAddress(account)}</p>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className={!chain ? 'warning red warning__redactive' : 'warning red warning__redactive'}>
-          <div className="warning__image"></div>
-          <div className="warning__content">
-            <h4>Please Choose BSC or CRO network!</h4>
-            <p>View on BscScan: {shortAddress(account)}</p>
+        ) : (
+          <div className={account ? "warning red warning__redactive" :  "warning red"}>
+            <div className="warning__image"></div>
+            <div className="warning__content">
+              <h4>Please Choose BSC or CRO network!</h4>
+              <p>View on BscScan: {shortAddress(account)}</p>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      ) : null}
     </>
   );
 };
