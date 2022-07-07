@@ -7,3 +7,4 @@ export * from './forgot';
 export * from './button'
 export * from './header'
 export * from './card'
+export * from './warning'
