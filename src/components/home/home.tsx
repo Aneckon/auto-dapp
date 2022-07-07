@@ -24,14 +24,15 @@ export const Home = () => {
 
   useEffect(() => {
     if (payBalanceBtn) {
-      if (balance === itemsPrice) {
+      if (balance !== '0') {
         setPayBalance(true);
       } else {
         setPayBalance(false);
       }
     }
-    console.log(payBalance);
   }, [payBalanceBtn, balance, itemsPrice]);
+
+  console.log(balance, itemsPrice);
 
   return (
     <div className="home" onClick={() => setOpenAva(false)}>
@@ -58,14 +59,14 @@ export const Home = () => {
           {account ? (
             itemsPrice ? (
               <Button click={() => setPayBalanceBtn(!payBalanceBtn)} className="card__btn">
-                Pay {activeBtn ? itemsPrice : 'Comming Soon!'}
+                {activeBtn ? `Pay ${itemsPrice}` : 'Comming Soon!'}
               </Button>
             ) : null
           ) : itemsPrice ? (
             <Button
               click={() => setActiveBalanceBtn(!activeBalanceBtn)}
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-              {activeBtn ? `${itemsPrice} BNB` : 'Comming Soon!'}
+              {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
             </Button>
           ) : null}
         </div>
