@@ -3,6 +3,7 @@ import { Button } from '../../../button';
 import { shortAddress, convertToNormal, copyToClipBoard } from '../../utils';
 import { useBtnConnect } from '../hooks/useBtnConnect';
 import { useModalConnectors } from '../hooks/useModalConnectors';
+import { useWeb3React } from '@web3-react/core';
 
 import {
   FortMatic,
@@ -30,6 +31,7 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
   const { active, balance, account, disconnect, chain, openModal, isOpen } = useBtnConnect();
   const { setProvider } = useModalConnectors(RPC, portisId);
   const copyTextRef = useRef(null);
+  const { chainId } = useWeb3React();
 
   return (
     <>
@@ -112,7 +114,13 @@ export const ConnectButton = ({ RPC, portisId }: { RPC: object; portisId: string
           <div className={account ? "warning warning__active" :  "warning"}>
             <div className="warning__image"></div>
             <div className="warning__content">
-              <h4>Connected to "Network Name"</h4>
+              <h4>Connected to 
+                {chainId === 338 || chainId === 25 
+                  ? ' CRO Network' 
+                  : chainId === 56 || chainId === 97 
+                    ? ' BSC Network'
+                    : ''}
+              </h4>
               <p>View on BscScan: {shortAddress(account)}</p>
             </div>
           </div>

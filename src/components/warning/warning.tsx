@@ -7,16 +7,34 @@ interface warningProps {
   activeBalanceBtn: boolean;
 }
 
-export const Warning: FC<warningProps> = ({
-  payBalance,
-  payBalanceBtn,
-  activeBalanceBtn,
-}) => {
+export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBalanceBtn }) => {
   const { account, chain } = useBtnConnect();
+
+  console.log(chain);
+
   return (
-    
     <>
       {account ? (
+        chain ? null : (
+          <div
+            className={
+              payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'
+            }>
+            <div className="warning__image"></div>
+            <div className="warning__content">
+              <h4>Please Choose BSC or CRO network!</h4>
+            </div>
+          </div>
+        )
+      ) : (
+        <div className={activeBalanceBtn ? 'warning red warning__redactive' : 'warning red'}>
+          <div className="warning__image"></div>
+          <div className="warning__content">
+            <h4>Please Choose network!</h4>
+          </div>
+        </div>
+      )}
+      {/* {account ? (
         chain ? (
           payBalance ? (
             <div
@@ -59,7 +77,7 @@ export const Warning: FC<warningProps> = ({
             <h4>Please Choose network!</h4>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 };

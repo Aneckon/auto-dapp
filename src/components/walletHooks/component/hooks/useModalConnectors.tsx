@@ -1,6 +1,6 @@
 import React from "react";
-import { useWeb3React } from "@web3-react/core";
 import { useConnectors } from "./useConnectors";
+import { useWeb3React } from "@web3-react/core";
 
 declare global {
   interface Window {
@@ -20,7 +20,7 @@ export const useModalConnectors = (RPC: object, portisId: string) => {
         alert("Recommended to install MetaMask wallet https://metamask.io/ ");
       }
     }
-
+    
     switch (type) {
       case "injected":
         activate(connectors.injected);

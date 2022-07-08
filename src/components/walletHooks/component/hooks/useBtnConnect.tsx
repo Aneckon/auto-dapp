@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { useConnectors } from './useConnectors';
+
 import Web3 from 'web3';
+import { useConnectors } from './useConnectors';
+import { useWeb3React } from '@web3-react/core';
+
+const include = [338, 25,56,97]
 
 export const useBtnConnect = () => {
   const { library, account, chainId, activate, deactivate, active } = useWeb3React();
-
+  
   const [chain, setChain] = useState(false);
 
   useEffect(() => {
-    if (chainId === 338) {
-      setChain(true);
-    } else if (chainId === 56) {
+    if (chainId && include.includes(chainId)) {
       setChain(true);
     } else {
       setChain(false);
@@ -24,9 +25,10 @@ export const useBtnConnect = () => {
   const [balance, setBalance] = useState('0.00');
 
   let web3 = new Web3(library?.provider);
-
+  
   const getInfo = async () => {
     const balance = await web3.eth.getBalance(account + '');
+  
     if (balance) {
       setBalance(balance);
     }

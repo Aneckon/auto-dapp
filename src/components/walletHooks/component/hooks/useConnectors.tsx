@@ -1,19 +1,23 @@
-import { useState, useEffect } from "react";
-import {useWeb3React} from '@web3-react/core';
+import { useEffect, useState } from "react";
+
+import { FortmaticConnector } from "@web3-react/fortmatic-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
+import { PortisConnector } from "@web3-react/portis-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
-import { FortmaticConnector } from "@web3-react/fortmatic-connector";
-import { PortisConnector } from "@web3-react/portis-connector";
+import {useWeb3React} from '@web3-react/core';
+
+const support = [338, 25, 56,97]
 
 export const useConnectors = (RPC?: object, portisId?: string) => {
   const [supportedChainIds, setSupportedChainIds] = useState<number[]>();
-
+  
   const { chainId } = useWeb3React()
 
   const getChainIds = (RPC:object) => {
     const chainIds = Object.keys(RPC).map(string => +string)
-    setSupportedChainIds(chainIds)
+    
+    setSupportedChainIds([...chainIds, ...support])
 
     if (chainId) {
       if (chainIds.includes(chainId)) return
