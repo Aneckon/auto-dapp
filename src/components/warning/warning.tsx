@@ -15,26 +15,6 @@ export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBal
   return (
     <>
       {account ? (
-        chain ? null : (
-          <div
-            className={
-              payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'
-            }>
-            <div className="warning__image"></div>
-            <div className="warning__content">
-              <h4>Please Choose BSC or CRO network!</h4>
-            </div>
-          </div>
-        )
-      ) : (
-        <div className={activeBalanceBtn ? 'warning red warning__redactive' : 'warning red'}>
-          <div className="warning__image"></div>
-          <div className="warning__content">
-            <h4>Please Choose network!</h4>
-          </div>
-        </div>
-      )}
-      {/* {account ? (
         chain ? (
           payBalance ? (
             <div
@@ -77,7 +57,7 @@ export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBal
             <h4>Please Choose network!</h4>
           </div>
         </div>
-      ) : null} */}
+      ) : null}
     </>
   );
 };
