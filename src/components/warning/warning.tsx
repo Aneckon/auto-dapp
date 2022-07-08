@@ -1,18 +1,77 @@
-import React, { FC } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import React, { FC, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 
 interface warningProps {
   payBalance: boolean;
   payBalanceBtn: boolean;
   activeBalanceBtn: boolean;
+  transactionBtn: boolean;
 }
 
-export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBalanceBtn }) => {
-  const { account } = useBtnConnect();
+export const Warning: FC<warningProps> = ({
+  payBalance,
+  payBalanceBtn,
+  activeBalanceBtn,
+  transactionBtn,
+}) => {
+  const { chainId } = useWeb3React();
+  const { account, chain } = useBtnConnect();
+
+  useEffect(() => {
+    if (account) {
+      if (!chain) {
+        if (chainId === 338 || chainId === 25 || chainId === 56 || chainId === 97) {
+          toast.success(`Connected to 
+        ${
+          chainId === 338 || chainId === 25
+            ? ' CRO Network'
+            : chainId === 56 || chainId === 97
+            ? ' BSC Network'
+            : ''
+        }`);
+        } else {
+          toast.error('Please Choose BSC or CRO network!');
+        }
+      }
+      if (chainId) {
+        if (transactionBtn) {
+          if (payBalance === true) {
+            if (payBalanceBtn === true) {
+              toast.success('Payment Success');
+            } else {
+              toast.error('Insufficient Balance');
+            }
+          } else {
+            toast.error('Insufficient Balance');
+          }
+        }
+      }
+    } else {
+      if (activeBalanceBtn) {
+        toast.error('Please Choose network!');
+      } else {
+      }
+    }
+  }, [account, chainId, payBalanceBtn, payBalance, activeBalanceBtn, transactionBtn, chain]);
 
   return (
     <>
-      {account ? (
+      <div>
+        <ToastContainer
+          autoClose={3000}
+          position="top-right"
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
+      {/* {account ? (
         !payBalance ? (
           <div
             className={
@@ -43,7 +102,7 @@ export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBal
             <h4>Please Choose network!</h4>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 };

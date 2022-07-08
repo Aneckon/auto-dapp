@@ -26,23 +26,24 @@ export const Home = () => {
   const [payBalance, setPayBalance] = useState(false);
   const [payBalanceBtn, setPayBalanceBtn] = useState(false);
   const [activeBalanceBtn, setActiveBalanceBtn] = useState(false);
+  const [transactionBtn, setTransactionBtn] = useState(false)
 
   const [payBnb, setPayBnb] = useState([]);
   const [payCro, setPayCro] = useState([]);
 
   const transaction = (price: number) => {
+    setTransactionBtn(!transactionBtn)
     if (account) {
       if (balance < price * 10 ** 18) {
-        setPayBalance(true);
-        setPayBalanceBtn(true);
+        setPayBalance(false);
       } else {
         setTransaction(price);
-        setPayBalanceBtn(true);
+        setPayBalanceBtn(!payBalanceBtn);
+        setPayBalance(!payBalance);
       }
     } else {
       setActiveBalanceBtn(!activeBalanceBtn);
     }
-    console.log(payBalanceBtn, "payBalanceBtn");
   };
 
   useEffect(() => {
@@ -105,6 +106,7 @@ export const Home = () => {
         payBalance={payBalance}
         payBalanceBtn={payBalanceBtn}
         activeBalanceBtn={activeBalanceBtn}
+        transactionBtn={transactionBtn}
       />
     </div>
   );
