@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 export const authAxios = ({ url, data, setAxiosError }: any) => {
-  const urlAxios = `http://localhost:4000${url}`;
+  const urlAxios = `https://autodappserver.herokuapp.com${url}`;
 
   axios
     .post(urlAxios, {
       data,
     })
     .then(function (response) {
+      console.log(response);
       setAxiosError(response.data.message);
     })
     .catch(function (error) {
@@ -22,7 +23,7 @@ export const croAxios = ({ setPayCro }: any) => {
   axios
     .get(urlAxios)
     .then(function (response) {
-      const res = response.data["crypto-com-chain"].bnb;
+      const res = response.data['crypto-com-chain'].bnb;
       setPayCro(res);
     })
     .catch(function (error) {

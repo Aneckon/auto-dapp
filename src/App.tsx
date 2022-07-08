@@ -7,12 +7,12 @@ export const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (localStorage.getItem('token')) {
-    //   navigate('/');
-    // } else {
-    //   navigate('/auth/login');
-    // }
-  }, []);
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    } else {
+      navigate('/auth/login');
+    }
+  }, [localStorage]);
 
   return (
     <div>
