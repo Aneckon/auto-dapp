@@ -13,7 +13,7 @@ import useSendTransaction from '../walletHooks/component/hooks/useSendTransactio
 import { useWeb3React } from '@web3-react/core';
 
 export const Home = () => {
-  const { balance, account, chain } = useBtnConnect();
+  const { balance, account } = useBtnConnect();
   const setTransaction = useSendTransaction();
   const { chainId } = useWeb3React();
 

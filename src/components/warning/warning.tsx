@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 
@@ -71,38 +71,6 @@ export const Warning: FC<warningProps> = ({
           pauseOnHover
         />
       </div>
-      {/* {account ? (
-        !payBalance ? (
-          <div
-            className={
-              payBalanceBtn ? 'warning warning__pay warning__active' : 'warning warning__pay'
-            }>
-            <div className="warning__image"></div>
-            <div className="warning__content">
-              <h4>Payment Success</h4>
-            </div>
-          </div>
-        ) : (
-          <div
-            className={
-              payBalanceBtn
-                ? 'warning red warning__pay warning__redactive'
-                : 'warning red warning__pay'
-            }>
-            <div className="warning__image"></div>
-            <div className="warning__content">
-              <h4>Insufficient Balance</h4>
-            </div>
-          </div>
-        )
-      ) : activeBalanceBtn ? (
-        <div className={activeBalanceBtn ? 'warning red warning__redactive' : 'warning red'}>
-          <div className="warning__image"></div>
-          <div className="warning__content">
-            <h4>Please Choose network!</h4>
-          </div>
-        </div>
-      ) : null} */}
     </>
   );
 };
