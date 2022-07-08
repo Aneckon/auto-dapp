@@ -166,103 +166,103 @@ table {
     font-size: 12px !important;
   }
 }
-// .warning {
-//   position: fixed;
-//   right: 0;
-//   top: 10%;
-//   max-width: 260px;
-//   width: 100%;
-//   padding: 0 0px 0 15px;
-//   background: #33cda9;
-//   height: 75px;
-//   border-radius: 20px 0 0 20px;
-//   transform: translateX(100%);
-//   &__pay{
-//     top: 20% !important;
-//   }
+.warning {
+  position: fixed;
+  right: 0;
+  top: 10%;
+  max-width: 260px;
+  width: 100%;
+  padding: 0 0px 0 15px;
+  background: #33cda9;
+  height: 75px;
+  border-radius: 20px 0 0 20px;
+  transform: translateX(100%);
+  &__pay{
+    top: 20% !important;
+  }
 
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     left: 10px;
-//     top: 15px;
-//     background: url('./components/image/done.svg') no-repeat center;
-//     width: 30px;
-//     height: 30px;
-//   }
-//   &__active{
-//     animation: animationsWarning 5s;
-//     transform: translateX(100%);
-//   }
-//   &__redactive{
-//     animation: animationsRedWarning 5s;
-//     transform: translateX(100%);
-//   }
-//   &__content {
-//     max-width: calc(100% - 35px);
-//     padding: 15px;
-//     margin-left: auto;
-//     background: #fff;
-//     height: 75px;
-//     text-align: left;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background: url('./components/image/done.svg') no-repeat center;
+    width: 30px;
+    height: 30px;
+  }
+  &__active{
+    animation: animationsWarning 5s;
+    transform: translateX(100%);
+  }
+  &__redactive{
+    animation: animationsRedWarning 5s;
+    transform: translateX(100%);
+  }
+  &__content {
+    max-width: calc(100% - 35px);
+    padding: 15px;
+    margin-left: auto;
+    background: #fff;
+    height: 75px;
+    text-align: left;
 
-//     h4 {
-//       font-style: normal;
-//       font-weight: 700;
-//       font-size: 13px;
-//       line-height: 108.5%;
-//       letter-spacing: 0.004em;
-//       color: #000000;
-//       padding-bottom: 5px;
-//     }
-//     p {
-//       font-style: normal;
-//       font-weight: 700;
-//       font-size: 10px;
-//       line-height: 160%;
-//       letter-spacing: 0.004em;
-//       color: #33cda9;
-//     }
-//   }
-// }
-// @keyframes animationsRedWarning {
-//   0% {
-//     transform: translateX(100%);
-//   }
-//   50% {
-//     transform: translateX(0%);
-//   }
-//   100% {
-//     transform: translateX(100%);
-//   }
-// }
-// @keyframes animationsWarning {
-//   0% {
-//     transform: translateX(100%);
-//   }
-//   50% {
-//     transform: translateX(0%);
-//   }
-//   100% {
-//     transform: translateX(100%);
-//   }
-// }
-// .red {
-//   background: #ff6d6d;
+    h4 {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 108.5%;
+      letter-spacing: 0.004em;
+      color: #000000;
+      padding-bottom: 5px;
+    }
+    p {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 160%;
+      letter-spacing: 0.004em;
+      color: #33cda9;
+    }
+  }
+}
+@keyframes animationsRedWarning {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes animationsWarning {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.red {
+  background: #ff6d6d;
 
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     left: 10px;
-//     top: 15px;
-//     background: url('./components/image/removeWr.svg') no-repeat center;
-//     width: 30px;
-//     height: 30px;
-//   }
-//   p {
-//     color: #ff6d6d;
-//   }
-// }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background: url('./components/image/removeWr.svg') no-repeat center;
+    width: 30px;
+    height: 30px;
+  }
+  p {
+    color: #ff6d6d;
+  }
+}
 /* You can add global styles to this file, and also import other style files */
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';

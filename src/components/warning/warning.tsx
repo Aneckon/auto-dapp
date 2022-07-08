@@ -8,45 +8,31 @@ interface warningProps {
 }
 
 export const Warning: FC<warningProps> = ({ payBalance, payBalanceBtn, activeBalanceBtn }) => {
-  const { account, chain } = useBtnConnect();
-
-  console.log(chain);
+  const { account } = useBtnConnect();
 
   return (
     <>
       {account ? (
-        chain ? (
-          payBalance ? (
-            <div
-              className={
-                payBalanceBtn ? 'warning warning__pay warning__active' : 'warning warning__pay'
-              }>
-              <div className="warning__image"></div>
-              <div className="warning__content">
-                <h4>Payment Success</h4>
-              </div>
-            </div>
-          ) : (
-            <div
-              className={
-                payBalanceBtn
-                  ? 'warning red warning__pay warning__redactive'
-                  : 'warning red warning__pay'
-              }>
-              <div className="warning__image"></div>
-              <div className="warning__content">
-                <h4>Insufficient Balance</h4>
-              </div>
-            </div>
-          )
-        ) : (
+        !payBalance ? (
           <div
             className={
-              payBalanceBtn ? 'warning red warning__pay warning__redactive' : 'warning red'
+              payBalanceBtn ? 'warning warning__pay warning__active' : 'warning warning__pay'
             }>
             <div className="warning__image"></div>
             <div className="warning__content">
-              <h4>Please Choose BSC or CRO network!</h4>
+              <h4>Payment Success</h4>
+            </div>
+          </div>
+        ) : (
+          <div
+            className={
+              payBalanceBtn
+                ? 'warning red warning__pay warning__redactive'
+                : 'warning red warning__pay'
+            }>
+            <div className="warning__image"></div>
+            <div className="warning__content">
+              <h4>Insufficient Balance</h4>
             </div>
           </div>
         )

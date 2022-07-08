@@ -11,6 +11,7 @@ import { Web3ReactProvider } from '@web3-react/core';
 import { App } from './App';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.scss';
 
 function getLibrary(provider: any) {

@@ -32,28 +32,18 @@ export const Home = () => {
 
   const transaction = (price: number) => {
     if (account) {
-      console.log({ balance, price });
       if (balance < price * 10 ** 18) {
-        console.log('this');
-        setPayBalance(false);
+        setPayBalance(true);
+        setPayBalanceBtn(true);
       } else {
         setTransaction(price);
-        setPayBalanceBtn(!payBalanceBtn);
+        setPayBalanceBtn(true);
       }
     } else {
       setActiveBalanceBtn(!activeBalanceBtn);
     }
+    console.log(payBalanceBtn, "payBalanceBtn");
   };
-
-  useEffect(() => {
-    if (payBalanceBtn) {
-      if (balance !== '0') {
-        setPayBalance(true);
-      } else {
-        setPayBalance(false);
-      }
-    }
-  }, [payBalanceBtn, balance, itemsPrice, payBalance]);
 
   useEffect(() => {
     croAxios({ setPayCro });
@@ -106,7 +96,7 @@ export const Home = () => {
             <Button
               click={activeBtn ? () => transaction(payBnb) : () => ''}
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-              {activeBtn ? `Pay ${payBnb} BNB` : 'Coming Soon!'}
+              {activeBtn ? `Pay ${itemsPrice} BNB` : 'Coming Soon!'}
             </Button>
           ) : null}
         </div>
