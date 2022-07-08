@@ -35,7 +35,7 @@ export const Warning: FC<warningProps> = ({
           toast.error('Please Choose BSC or CRO network!');
         }
       }
-      if (chainId) {
+      if (!activeBalanceBtn) {
         if (transactionBtn) {
           if (payBalance === true) {
             if (payBalanceBtn === true) {
@@ -51,7 +51,6 @@ export const Warning: FC<warningProps> = ({
     } else {
       if (activeBalanceBtn) {
         toast.error('Please Choose network!');
-      } else {
       }
     }
   }, [account, chainId, payBalanceBtn, payBalance, activeBalanceBtn, transactionBtn, chain]);
