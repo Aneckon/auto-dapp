@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // @ts-nocheck
 
 import './home.scss';
@@ -7,14 +6,6 @@ import { Button, Card, Header, Warning } from '..';
 import React, { useEffect, useState } from 'react';
 import { bnbAxios, croAxios } from '../axios';
 
-=======
-import './home.scss';
-
-import { Button, Card, Header, Warning } from '..';
-import React, { useEffect, useState } from 'react';
-import { bnbAxios, croAxios } from '../axios';
-
->>>>>>> 1ef80e493e4336b199be5955999c646f73548e7a
 import { cardApi } from '../mokApi';
 import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 import { useSelector } from 'react-redux';
@@ -23,11 +14,7 @@ import { useWeb3React } from '@web3-react/core';
 
 export const Home = () => {
   const { balance, account, chain } = useBtnConnect();
-<<<<<<< HEAD
   const setTransaction = useSendTransaction();
-=======
-  const setTransaction = useSendTransaction()
->>>>>>> 1ef80e493e4336b199be5955999c646f73548e7a
   const { chainId } = useWeb3React();
 
   const [openAva, setOpenAva] = useState(false);
@@ -43,7 +30,6 @@ export const Home = () => {
   const [payBnb, setPayBnb] = useState([]);
   const [payCro, setPayCro] = useState([]);
 
-<<<<<<< HEAD
   const transaction = (price: number) => {
     if (account) {
       console.log({ balance, price });
@@ -59,20 +45,6 @@ export const Home = () => {
     }
   };
 
-=======
-  const transaction = () => {
-    if (account) {
-      console.log('1')
-      setTransaction(1)
-      setPayBalanceBtn(!payBalanceBtn)
-    } else {
-      console.log('2')
-      setActiveBalanceBtn(!activeBalanceBtn)
-    }
-    
-  }
-  
->>>>>>> 1ef80e493e4336b199be5955999c646f73548e7a
   useEffect(() => {
     if (payBalanceBtn) {
       if (balance !== '0') {
@@ -116,7 +88,6 @@ export const Home = () => {
             chainId && [338, 25].includes(chainId) ? (
               itemsPrice ? (
                 <Button
-<<<<<<< HEAD
                   click={activeBtn ? () => transaction(priceCro.toFixed(5)) : () => ''}
                   className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
                   {activeBtn ? `Pay ${priceCro.toFixed(5)} CRO` : 'Coming Soon!'}
@@ -134,23 +105,6 @@ export const Home = () => {
           ) : itemsPrice ? (
             <Button
               click={activeBtn ? () => transaction(payBnb) : () => ''}
-=======
-                  click={transaction}
-                  className="card__btn">
-                  {activeBtn ? `Pay ${priceCro.toFixed(5)} CRO` : 'Comming Soon!'}
-                </Button>
-              ) : null
-            ) : itemsPrice ? (
-              <Button
-                click={transaction}
-                className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
-                {activeBtn ? `Pay ${itemsPrice} BNB` : 'Comming Soon!'}
-              </Button>
-            ) : null
-          ) : itemsPrice ? (
-            <Button
-              click={transaction}
->>>>>>> 1ef80e493e4336b199be5955999c646f73548e7a
               className={activeBtn ? 'card__btn' : 'card__btn card__btn-none'}>
               {activeBtn ? `Pay ${payBnb} BNB` : 'Coming Soon!'}
             </Button>
