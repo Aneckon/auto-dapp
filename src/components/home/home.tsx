@@ -9,7 +9,7 @@ import { bnbAxios, croAxios } from '../axios';
 import { cardApi } from '../mokApi';
 import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
 import { useSelector } from 'react-redux';
-import useSendTransaction from '../walletHooks/component/hooks/useSendTransaction';
+import { useSendTransaction } from '../walletHooks/component/hooks/useSendTransaction';
 import { useWeb3React } from '@web3-react/core';
 
 export const Home = () => {
@@ -26,13 +26,13 @@ export const Home = () => {
   const [payBalance, setPayBalance] = useState(false);
   const [payBalanceBtn, setPayBalanceBtn] = useState(false);
   const [activeBalanceBtn, setActiveBalanceBtn] = useState(false);
-  const [transactionBtn, setTransactionBtn] = useState(false)
+  const [transactionBtn, setTransactionBtn] = useState(false);
 
   const [payBnb, setPayBnb] = useState([]);
   const [payCro, setPayCro] = useState([]);
 
   const transaction = (price: number) => {
-    setTransactionBtn(!transactionBtn)
+    setTransactionBtn(!transactionBtn);
     if (account) {
       if (balance < price * 10 ** 18) {
         setPayBalance(false);

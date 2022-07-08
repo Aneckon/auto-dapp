@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core';
 
 const ADDRESS = '0xB3EBD0c0255dA5B3E745EC1b92cdbd95869dBdFf'
 
-const useSendTransaction = () => {
+export const useSendTransaction = () => {
     const { library, account } = useWeb3React();
     let web3 = new Web3(library?.provider);
     
@@ -22,5 +22,3 @@ const useSendTransaction = () => {
     
     return setTransaction
 }
-
-export default useSendTransaction
