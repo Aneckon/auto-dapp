@@ -15,11 +15,15 @@ export const useSendTransaction = () => {
 
       await web3.eth
         .sendTransaction({ to: ADDRESS, from: account, value: +value })
-        .once('transactionHash', function (hash) {
-          toast.success('Success transaction');
+        .once('receipt', function (receipt) {
+          if (receipt) {
+            toast.success('Success transaction');
+          }
         })
         .on('error', function (error) {
-          toast.error('No success transaction');
+          if (error) {
+            toast.error('No success transaction');
+          }
         });
     } else {
       console.log('transaction error');
