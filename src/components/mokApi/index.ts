@@ -6,7 +6,7 @@ export const cardApi = [
   {
     id: 1,
     name: 'Website',
-    price: 0.2,
+    price: 0.00000001,
     image: websiteImage,
     active: true,
     activeClass: false,

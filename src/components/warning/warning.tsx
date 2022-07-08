@@ -1,7 +1,9 @@
 import { useWeb3React } from '@web3-react/core';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import Web3 from 'web3';
 import { toast, ToastContainer } from 'react-toastify';
 import { useBtnConnect } from '../walletHooks/component/hooks/useBtnConnect';
+import { useSendTransaction } from '../walletHooks/component/hooks/useSendTransaction';
 
 interface warningProps {
   payBalance: boolean;

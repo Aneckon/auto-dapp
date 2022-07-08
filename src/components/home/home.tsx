@@ -37,7 +37,7 @@ export const Home = () => {
       if (balance < price * 10 ** 18) {
         setPayBalance(false);
       } else {
-        setTransaction(price);
+        setTransaction.setTransaction(price);
         setPayBalanceBtn(!payBalanceBtn);
         setPayBalance(!payBalance);
       }
