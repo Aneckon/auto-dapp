@@ -57,20 +57,18 @@ export const Warning: FC<warningProps> = ({
   }, [account, chainId, payBalanceBtn, payBalance, activeBalanceBtn, transactionBtn, chain]);
 
   return (
-    <>
-      <div>
-        <ToastContainer
-          autoClose={3000}
-          position="top-right"
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </div>
-    </>
+    <div>
+      <ToastContainer
+        autoClose={3000}
+        position="top-right"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </div>
   );
 };
