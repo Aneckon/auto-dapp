@@ -8,7 +8,9 @@ export const authAxios = ({ url, data, setAxiosError }: any) => {
       data,
     })
     .then(function (response) {
-      console.log(response);
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
       setAxiosError(response.data.message);
     })
     .catch(function (error) {

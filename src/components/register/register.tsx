@@ -29,7 +29,7 @@ export const Register = () => {
         if (axiosError) {
           navigate('/auth/register/sendotp');
         }
-        const url = '/addUser';
+        const url = '/sendOTP';
         authAxios({ data, url, setAxiosError });
       }
       if (location.pathname === '/auth/register/sendotp') {
@@ -37,16 +37,23 @@ export const Register = () => {
           navigate('/auth/register/resendotp');
         }
 
-        const url = '/sendOTP';
+        const url = '/resendOTP';
         authAxios({ data, url, setAxiosError });
       }
       if (location.pathname === '/auth/register/resendotp') {
         if (axiosError) {
           navigate('/auth/login');
         }
-        
-        const url = '/addUser';
+
+        const url = '/checkOTP';
         authAxios({ data, url, setAxiosError });
+      }
+      if (location.pathname === '/auth/register/resendotp') {
+        if (axiosError) {
+          navigate('/auth/login');
+          const url = '/addUser';
+          authAxios({ data, url, setAxiosError });
+        }
       }
     }
   };
