@@ -4,16 +4,6 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Auth, Home, Register } from './components';
 
 export const App = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      navigate('/');
-    } else {
-      navigate('/auth/login');
-    }
-  }, [localStorage]);
-
   return (
     <div>
       <Routes>
